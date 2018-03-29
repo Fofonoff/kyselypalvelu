@@ -6,13 +6,21 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 
 import com.example.kyselypalvelu.domain.Question;
 import com.example.kyselypalvelu.domain.QuestionRepository;
 
 @SpringBootApplication
-public class KyselypalveluApplication {
+public class KyselypalveluApplication extends SpringBootServletInitializer{
+	
+	@Override
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+		return application.sources(KyselypalveluApplication.class);
+	}
+	
 	private static final Logger log = LoggerFactory.getLogger(KyselypalveluApplication.class);
 	
 	public static void main(String[] args) {
