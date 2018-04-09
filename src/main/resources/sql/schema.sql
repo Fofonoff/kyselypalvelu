@@ -1,36 +1,18 @@
 create table Question (
-id int autoincrement not null,
+id int AUTO_INCREMENT not null,
 name varchar(30) not null,
 question text not null,
-surveyid (fk) not null;
+surveyid int not null,
+answerid int not null,
+PRIMARY KEY (id)
 );
 
 create table Survey (
 id int autoincrement not null,
-name varchar(20) not null
+name varchar(20) not null,
+questionid int not null,
+
 );
 
-
-Select * from Question;
-
-Select question from Question where id=?;
-
-Insert into Question (name, question) Values(?,?);
-
-Delete * Question;
-
-Delete question from Question where id=?;
-
-Select * from Survey;
-
-Select name from Survey where id=?;
-
-Insert into Survey (name) Value(?);
-
-Delete * Survey;
-
-Delete name from Survey where id=?;
-
-Select * from  Question q Join Survey s On s.surveyeid=q.id;
-
-Select q.question from Question q Join Survey s On s.surveyid=q.id where q.id=?;
+FOREIGN KEY (surveyid) REFERENCES Survey(id),
+FOREIGN KEY (answerid) REFERENCES Answer(id)
