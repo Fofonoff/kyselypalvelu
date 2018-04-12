@@ -46,6 +46,6 @@ public class QuestionController {
 	}
 	@RequestMapping(value ="/surveys/survey{id}", method = RequestMethod.GET)
 	public @ResponseBody Optional<Survey> findSurveyRest(@PathVariable("id") Long surveyid) {
-		return srepository.findById(surveyid);
+		return srepository.findBysurveyid(surveyid);
 	}
 }
