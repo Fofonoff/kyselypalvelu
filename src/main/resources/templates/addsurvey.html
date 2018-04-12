@@ -2,11 +2,16 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
+<<<<<<< HEAD
 <title>Insert title here</title>
+=======
+<title>Luo kysely</title>
+>>>>>>> 5f8feb5dad90a58581cd846271b8afb3313b1bdd
 </head>
 <body>
 
 
+<<<<<<< HEAD
 
 <table>
 <tr>
@@ -31,18 +36,39 @@
 <p>
 
 <form th:object="${survey}" th:action="@{/savesurvey}" action="#" method="post">
+=======
+<form th:object="${survey}" th:action="@{/save}" action="#" method="post">
+
+>>>>>>> 5f8feb5dad90a58581cd846271b8afb3313b1bdd
   Kyselyn nimi:<br>
   <input type="text" id="name" th:field="*{name}" name="name"><br>
   <input type="submit" value="Luo kysely"></input>
 </form>
    
+<<<<<<< HEAD
 <table> 
  <tr th:each="survey : ${surveys}">
 	  	<td th:text="${survey.name}"></td> 
 		<td th:text="${survey.questions}"></td>		
+=======
+<table>
+
+<tr>
+<th>Kyselyn nimi</th>
+</tr>
+
+<tr th:each="survey : ${surveys}">
+	  	<td th:text="${survey.name}"></td> 
+		<td th:text="${survey.questions}"></td>	
+		</tr>	
+>>>>>>> 5f8feb5dad90a58581cd846271b8afb3313b1bdd
 </table>  
    
    
 
 </body>
 </html>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5f8feb5dad90a58581cd846271b8afb3313b1bdd
