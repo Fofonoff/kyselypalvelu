@@ -14,7 +14,7 @@ public class Answer {
 @Id
 @GeneratedValue(strategy=GenerationType.AUTO)
 private Long answerid;
-private String answer;
+private String vastaus;
 @ManyToOne
 @JsonIgnore
 @JoinColumn(name="id")
@@ -22,16 +22,18 @@ private Question question;
 
 private Answer (){}
 
-private Answer(String answer){
-	this.answer=answer;
+private Answer(String vastaus){
+	this.vastaus=vastaus;
 }
 
 public Long getAnswerid() {
 	return answerid;
 }
 
-public String getAnswer() {
-	return answer;
+
+
+public String getVastaus() {
+	return vastaus;
 }
 
 public Question getQuestion() {
@@ -42,17 +44,21 @@ public void setAnswerid(Long answerid) {
 	this.answerid = answerid;
 }
 
-public void setAnswer(String answer) {
-	this.answer = answer;
-}
+
 
 public void setQuestion(Question question) {
 	this.question = question;
 }
 
+
+
+public void setVastaus(String vastaus) {
+	this.vastaus = vastaus;
+}
+
 @Override
 public String toString() {
-	return "Answer [answerid=" + answerid + ", answer=" + answer + ", question=" + question + "]";
+	return "Answer [answerid=" + answerid + ", vastaus=" + vastaus + ", question=" + question + "]";
 }
 
 }
