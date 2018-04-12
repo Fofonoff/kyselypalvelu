@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -47,5 +48,19 @@ public class QuestionController {
 	@RequestMapping(value ="/surveys/survey{id}", method = RequestMethod.GET)
 	public @ResponseBody Optional<Survey> findSurveyRest(@PathVariable("id") Long surveyid) {
 		return srepository.findBysurveyid(surveyid);
+	}
+	
+	@RequestMapping(value = "/addsurvey", method = RequestMethod.GET)
+	public String listQuestions(Model model) {
+		model.addAttribute("questions", repository.findAll());
+		model.addAttribute("surveys", srepository.findAll());
+		model.addAttribute("question", new Question());
+		model.addAttribute("survey", new Survey());
+		return "addsurvey";
+	}
+	@RequestMapping(value = "/savequestion", method = RequestMethod.POST)
+	public String saveQuestion(Question question) {
+		repository.save(question);
+		return "redirect:addsurvey";
 	}
 }
