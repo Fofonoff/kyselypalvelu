@@ -22,7 +22,7 @@
 
 <tr th:each="survey : ${surveys}">
 	  	<td th:text="${survey.name}"></td> 
-		<td th:text="${survey.questions}"></td>	
+		<td ><a th:href="@{/editsurvey/{id}(id=${survey.surveyid})}">Avaa kysely</a></td>
 		</tr>	
 </table>  
    

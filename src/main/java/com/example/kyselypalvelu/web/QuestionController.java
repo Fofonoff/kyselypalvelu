@@ -50,11 +50,16 @@ public class QuestionController {
 		return srepository.findBysurveyid(surveyid);
 	}
 	
+	//siirretään survey-controlleriin
+	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
+	public String addBook(@PathVariable("id") Long surveyId, Model model) {
+		model.addAttribute("survey", srepository.findBysurveyid(surveyId));
+	    return "";
+	}  
+	//siirretään survey-controlleriin
 	@RequestMapping(value = "/addsurvey", method = RequestMethod.GET)
 	public String listQuestions(Model model) {
-		model.addAttribute("questions", repository.findAll());
 		model.addAttribute("surveys", srepository.findAll());
-		model.addAttribute("question", new Question());
 		model.addAttribute("survey", new Survey());
 		return "addsurvey";
 	}
@@ -63,4 +68,6 @@ public class QuestionController {
 		repository.save(question);
 		return "redirect:addsurvey";
 	}
+	
+	
 }
