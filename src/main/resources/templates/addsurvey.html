@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Luo kysely</title>
+</head>
+<body>
+
+
+<form th:object="${survey}" th:action="@{/save}" action="#" method="post">
+
+  Kyselyn nimi:<br>
+  <input type="text" id="name" th:field="*{name}" name="name"><br>
+  <input type="submit" value="Luo kysely"></input>
+</form>
+   
+<table>
+
+<tr>
+<th>Kyselyn nimi</th>
+</tr>
+
+<tr th:each="survey : ${surveys}">
+	  	<td th:text="${survey.name}"></td> 
+		<td th:text="${survey.questions}"></td>	
+		</tr>	
+</table>  
+   
+   
+
+</body>
+</html>
