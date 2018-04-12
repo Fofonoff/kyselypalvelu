@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 	    private Long id;
 		
 		private String name;
-		private String question;
+		private String kysymys;
 		@ManyToOne
 		@JsonIgnore
 		@JoinColumn(name="surveyid")
@@ -30,10 +30,17 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 		private List <Answer> answer;
 		
 	
-		public Question(String name, String question) {
+		public Question(String name, String kysymys, Survey survey) {
 			super();
 			this.name = name;
-			this.question = question;
+			this.kysymys = kysymys;
+			this.survey = survey;
+		}
+		
+		public Question(String name, String kysymys) {
+			super();
+			this.name = name;
+			this.kysymys = kysymys;
 		}
 
 		public Question() {
@@ -52,8 +59,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 			return answer;
 		}
 
-		public String getQuestion() {
-			return question;
+		public String getKysymys() {
+			return kysymys;
 		}
 
 		public Survey getSurvey() {
@@ -68,8 +75,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 			this.name = name;
 		}
 
-		public void setQuestion(String question) {
-			this.question = question;
+		public void setKysymys(String kysymys) {
+			this.kysymys = kysymys;
 		}
 
 		public void setSurvey(Survey survey) {
@@ -82,7 +89,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 		@Override
 		public String toString() {
-			return "Question [id=" + id + ", name=" + name + ", question=" + question + ", survey=" + survey + "]";
+			return "Question [id=" + id + ", name=" + name + ", kysymys=" + kysymys + ", survey=" + survey + "]";
 		}
 			
 }

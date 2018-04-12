@@ -16,7 +16,7 @@ public class Survey {
 private Long surveyid;
 private String name;
 @OneToMany(cascade= CascadeType.ALL, mappedBy="survey")
-List <Question> question;
+List <Question> questions;
 
 public Survey(){}
 
@@ -33,8 +33,8 @@ public String getName() {
 	return name;
 }
 
-public List<Question> getQuestion() {
-	return question;
+public List<Question> getQuestions() {
+	return questions;
 }
 
 public void setSurveyid(Long surveyid) {
@@ -45,13 +45,13 @@ public void setName(String name) {
 	this.name = name;
 }
 
-public void setQuestion(List<Question> question) {
-	this.question = question;
+public void setQuestion(List<Question> questions) {
+	this.questions = questions;
 }
 
 @Override
 public String toString() {
-	return "Survey [surveyid=" + surveyid + ", name=" + name + ", question=" + question + "]";
+	return "Survey [surveyid=" + surveyid + ", name=" + name + ", questions=" + questions + "]";
 }
 
 }

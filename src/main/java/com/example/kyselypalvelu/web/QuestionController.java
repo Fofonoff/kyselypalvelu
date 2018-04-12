@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.kyselypalvelu.domain.Answer;
@@ -40,6 +41,11 @@ public class QuestionController {
 	public @ResponseBody List<Survey> getSurveys(){
 		return (List<Survey>) srepository.findAll();
 	}
+	@RequestMapping(value="/surveys/{name}", method=RequestMethod.GET)//idis löytää nimen perusteella tietyt kyssärit tiettyyn surveyhyn
+	public @ResponseBody List<Survey> getSurveys(@RequestParam(value="name", required=true) String name){
+		return srepository.findByName(name);
+	}
+	
 	@RequestMapping(value="/answers", method=RequestMethod.GET)
 	public @ResponseBody List<Answer> getAnswers(){
 		return (List<Answer>) arepository.findAll();

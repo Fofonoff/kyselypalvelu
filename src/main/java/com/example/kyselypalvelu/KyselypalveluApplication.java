@@ -12,6 +12,8 @@ import org.springframework.context.annotation.Bean;
 
 import com.example.kyselypalvelu.domain.Question;
 import com.example.kyselypalvelu.domain.QuestionRepository;
+import com.example.kyselypalvelu.domain.Survey;
+import com.example.kyselypalvelu.domain.SurveyRepository;
 
 @SpringBootApplication
 public class KyselypalveluApplication extends SpringBootServletInitializer{
@@ -28,12 +30,22 @@ public class KyselypalveluApplication extends SpringBootServletInitializer{
 	}
 	
 	@Bean
-	public CommandLineRunner questionDemo(QuestionRepository repository) {
+	public CommandLineRunner questionDemo(QuestionRepository repository, SurveyRepository srepo) {
 		return (args) -> {
-			log.info("Saving couple of questions");
+			log.info("Saving test Boss-survey and Inno-survey");
+			Survey survey1 = srepo.save(new Survey("Boss"));
+			Survey survey2 = srepo.save(new Survey("Inno"));
 			
-			repository.save(new Question("beer", "Olut, kalja, bisse vai bini?"));
-			repository.save(new Question("howAreYou", "Kuinka on päivä mennyt?"));
+			
+			
+			log.info("Saving couple of questions");
+				
+			repository.save(new Question("beer", "Olut, kalja, bisse vai bini?", survey1));
+			repository.save(new Question("howAreYou", "Kuinka on päivä mennyt?", survey2));
+			
+			repository.save(new Question("kavereita", "Menitkö tapahtumiin yksin vai kavereiden kanssa?", survey1));
+			repository.save(new Question("uusia", "Tutustuitko uusiin ihmisiin?", survey1));
+			repository.save(new Question("bestest", "Mistä Helgan järjestämästä tapahtumasta olet pitänyt eniten?", survey1));
 		};
 	}
 }
