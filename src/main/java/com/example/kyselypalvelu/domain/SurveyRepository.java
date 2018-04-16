@@ -11,6 +11,9 @@ public interface SurveyRepository extends CrudRepository <Survey, Long>{
 
 	Optional<Survey> findBysurveyid(Long surveyid);
 
-	List<Survey> findByName(String name);
+
+
+
+	
 
 }

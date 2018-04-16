@@ -9,4 +9,6 @@ public interface QuestionRepository extends CrudRepository<Question, Long>{
 	
 	List<Question> findByName(String name);
 	
+	List<Question> findBysurvey(Survey survey);
+	
 }

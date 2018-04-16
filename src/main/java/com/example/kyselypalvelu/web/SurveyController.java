@@ -28,14 +28,14 @@ public class SurveyController {
 	public @ResponseBody List<Survey> getSurveys(){
 		return (List<Survey>) srepository.findAll();
 	}
-	@RequestMapping(value="/surveys/{name}", method=RequestMethod.GET)//idis löytää nimen perusteella tietyt kyssärit tiettyyn surveyhyn
-	public @ResponseBody List<Survey> getSurveys(@RequestParam(value="name", required=true) String name){
-		return srepository.findByName(name);
-	}
+	//@RequestMapping(value="/surveys/{name}", method=RequestMethod.GET)//idis löytää nimen perusteella tietyt kyssärit tiettyyn surveyhyn
+	//public @ResponseBody Survey getSurveys(@PathVariable("name")String name){
+	//return srepository.findByname(name);
+	//}
 
-	@RequestMapping(value ="/surveys/survey{id}", method = RequestMethod.GET)
-	public @ResponseBody Optional<Survey> findSurveyRest(@PathVariable("id") Long surveyid) {
-		return srepository.findBysurveyid(surveyid);
+	@RequestMapping(value ="/surveys/{id}", method = RequestMethod.GET)
+	public @ResponseBody Survey findSurveyRest(@PathVariable("id") Long surveyid) {
+		return srepository.findOne(surveyid);
 	}
 	
 
