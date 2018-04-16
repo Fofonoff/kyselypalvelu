@@ -30,11 +30,6 @@ public Long getAnswerid() {
 	return answerid;
 }
 
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 417b47770c548f9c1b05553b92b372c7bc497d50
 public String getVastaus() {
 	return vastaus;
 }
@@ -47,13 +42,11 @@ public void setAnswerid(Long answerid) {
 	this.answerid = answerid;
 }
 
-<<<<<<< HEAD
+
 public void setAnswer(String vastaus) {
 	this.vastaus = vastaus;
 }
-=======
 
->>>>>>> 417b47770c548f9c1b05553b92b372c7bc497d50
 
 public void setQuestion(Question question) {
 	this.question = question;

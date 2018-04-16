@@ -30,7 +30,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 		private List <Answer> answer;
 		
 	
-<<<<<<< HEAD
+
 		public Question(String name, String kysymys, Survey survey) {
 			super();
 			this.name = name;
@@ -42,14 +42,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 			super();
 			this.name = name;
 			this.kysymys = kysymys;
-=======
-		public Question(String name, String kysymys) {
-			super();
-			this.name = name;
-			this.kysymys = kysymys;
->>>>>>> 417b47770c548f9c1b05553b92b372c7bc497d50
 		}
-
+		
 		public Question() {
 			super();
 		}
@@ -66,22 +60,14 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 			return answer;
 		}
 
-<<<<<<< HEAD
 		public String getKysymys() {
 			return kysymys;
 		}
-=======
-	
->>>>>>> 417b47770c548f9c1b05553b92b372c7bc497d50
 
 		public Survey getSurvey() {
 			return survey;
 		}
 
-		
-		public String getKysymys() {
-			return kysymys;
-		}
 
 		public void setId(Long id) {
 			this.id = id;
@@ -91,13 +77,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 			this.name = name;
 		}
 
-<<<<<<< HEAD
+
 		public void setKysymys(String kysymys) {
 			this.kysymys = kysymys;
 		}
-=======
-		
->>>>>>> 417b47770c548f9c1b05553b92b372c7bc497d50
+
 
 		public void setSurvey(Survey survey) {
 			this.survey = survey;
@@ -108,18 +92,14 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 		}
 
 		
-		public void setKysymys(String kysymys) {
-			this.kysymys = kysymys;
-		}
+	
 
 		@Override
 		public String toString() {
-<<<<<<< HEAD
-			return "Question [id=" + id + ", name=" + name + ", kysymys=" + kysymys + ", survey=" + survey + "]";
-=======
+
 			return "Question [id=" + id + ", name=" + name + ", kysymys=" + kysymys + ", survey=" + survey + ", answer="
 					+ answer + "]";
->>>>>>> 417b47770c548f9c1b05553b92b372c7bc497d50
+
 		}
 			
 }
