@@ -16,16 +16,13 @@ import com.example.kyselypalvelu.domain.Answer;
 import com.example.kyselypalvelu.domain.AnswerRepository;
 import com.example.kyselypalvelu.domain.Question;
 import com.example.kyselypalvelu.domain.QuestionRepository;
-import com.example.kyselypalvelu.domain.Survey;
-import com.example.kyselypalvelu.domain.SurveyRepository;
+
 
 @Controller
 public class QuestionController {
 
 	@Autowired
 	private QuestionRepository repository;
-	@Autowired
-	private SurveyRepository srepository;
 	@Autowired
 	private AnswerRepository arepository;
 	
@@ -38,37 +35,12 @@ public class QuestionController {
 	public @ResponseBody Question getOneQuestion(@PathVariable("id") Long questionId){
 		return repository.findOne(questionId);
 	}
-	@RequestMapping(value="/surveys", method=RequestMethod.GET)
-	public @ResponseBody List<Survey> getSurveys(){
-		return (List<Survey>) srepository.findAll();
-	}
-	@RequestMapping(value="/surveys/{name}", method=RequestMethod.GET)//idis löytää nimen perusteella tietyt kyssärit tiettyyn surveyhyn
-	public @ResponseBody List<Survey> getSurveys(@RequestParam(value="name", required=true) String name){
-		return srepository.findByName(name);
-	}
-	
+	//ehkä oma answerController vielä tehtävää??
 	@RequestMapping(value="/answers", method=RequestMethod.GET)
 	public @ResponseBody List<Answer> getAnswers(){
 		return (List<Answer>) arepository.findAll();
 	}
-	@RequestMapping(value ="/surveys/survey{id}", method = RequestMethod.GET)
-	public @ResponseBody Optional<Survey> findSurveyRest(@PathVariable("id") Long surveyid) {
-		return srepository.findBysurveyid(surveyid);
-	}
 	
-	//siirretään survey-controlleriin
-	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
-	public String addBook(@PathVariable("id") Long surveyId, Model model) {
-		model.addAttribute("survey", srepository.findBysurveyid(surveyId));
-	    return "";
-	}  
-	//siirretään survey-controlleriin
-	@RequestMapping(value = "/addsurvey", method = RequestMethod.GET)
-	public String listQuestions(Model model) {
-		model.addAttribute("surveys", srepository.findAll());
-		model.addAttribute("survey", new Survey());
-		return "addsurvey";
-	}
 	@RequestMapping(value = "/savequestion", method = RequestMethod.POST)
 	public String saveQuestion(Question question) {
 		repository.save(question);
