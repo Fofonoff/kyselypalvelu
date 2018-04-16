@@ -1,16 +1,13 @@
 package com.example.kyselypalvelu.web;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.kyselypalvelu.domain.Answer;
@@ -47,6 +44,11 @@ public class QuestionController<Survey> {
 		repository.save(question);
 		return "redirect:addsurvey";
 	}
-	
+
+	@RequestMapping(value = "/answers", method = RequestMethod.POST)
+    public @ResponseBody Answer saveAnswer(@RequestBody Answer answer) {
+        arepository.save(answer);
+        return answer;
+    }
 	
 }
