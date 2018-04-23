@@ -2,6 +2,7 @@ create table Question IF NOT EXISTS (
 questionid int AUTO_INCREMENT not null,
 name varchar(30) not null,
 kysymys text not null,
+questiontype varchar(15) not null,
 surveyid int not null,
 answerid int not null,
 PRIMARY KEY (questionid)
@@ -30,4 +31,4 @@ insert into Question (name, kysymys, surveyid)
 values (uusia, Tutustuitko uusiin ihmisiin?, 1)
 
 insert into Question (name, kysymys, surveyid)
-values (bestest, Mistä Helgan järjestämästä tapahtumasta olet pitänyt eniten?, 2)
+values (bestest, Mistä Helgan järjestämästä tapahtumasta olet pitänyt eniten?, 2);

@@ -40,12 +40,12 @@ public class KyselypalveluApplication extends SpringBootServletInitializer{
 			
 			log.info("Saving couple of questions");
 				
-			repository.save(new Question("beer", "Olut, kalja, bisse vai bini?", survey1));
-			repository.save(new Question("howAreYou", "Kuinka on päivä mennyt?", survey2));
+			repository.save(new Question("beer", "Olut, kalja, bisse vai bini?", " ", survey1));
+			repository.save(new Question("howAreYou", "Kuinka on päivä mennyt?", " ", survey2));
 			
-			repository.save(new Question("kavereita", "Menitkö tapahtumiin yksin vai kavereiden kanssa?", survey1));
-			repository.save(new Question("uusia", "Tutustuitko uusiin ihmisiin?", survey1));
-			repository.save(new Question("bestest", "Mistä Helgan järjestämästä tapahtumasta olet pitänyt eniten?", survey1));
+			repository.save(new Question("kavereita", "Menitkö tapahtumiin yksin vai kavereiden kanssa?", " ", survey1));
+			repository.save(new Question("uusia", "Tutustuitko uusiin ihmisiin?", " ", survey1));
+			repository.save(new Question("bestest", "Mistä Helgan järjestämästä tapahtumasta olet pitänyt eniten?", " ", survey1));
 		};
 	}
 }

@@ -19,9 +19,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 		@Id
 	    @GeneratedValue(strategy=GenerationType.AUTO)
 	    private Long id;
-		
 		private String name;
 		private String kysymys;
+		private String questiontype;
 		@ManyToOne
 		@JsonIgnore
 		@JoinColumn(name="surveyid")
@@ -31,10 +31,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 		
 	
 
-		public Question(String name, String kysymys, Survey survey) {
+		public Question(String name, String kysymys, String questiontype, Survey survey) {
 			super();
 			this.name = name;
 			this.kysymys = kysymys;
+			this.questiontype = questiontype;
 			this.survey = survey;
 		}
 		
@@ -91,15 +92,19 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 			this.answer = answer;
 		}
 
-		
-	
+		public String getQuestiontype() {
+			return questiontype;
+		}
+
+		public void setQuestiontype(String questiontype) {
+			this.questiontype = questiontype;
+		}
 
 		@Override
 		public String toString() {
-
-			return "Question [id=" + id + ", name=" + name + ", kysymys=" + kysymys + ", survey=" + survey + ", answer="
-					+ answer + "]";
-
+			return "Question [id=" + id + ", name=" + name + ", kysymys=" + kysymys + ", questiontype=" + questiontype + ", survey="
+					+ survey + ", answer=" + answer + "]";
 		}
-			
+		
+	
 }
