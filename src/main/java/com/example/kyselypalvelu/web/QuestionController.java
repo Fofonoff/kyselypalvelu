@@ -21,8 +21,9 @@ public class QuestionController<Survey> {
 
 	@Autowired
 	private QuestionRepository repository;
-	@Autowired
 	private AnswerRepository arepository;
+	
+	
 	
 	@RequestMapping(value="/questions", method=RequestMethod.GET)
 	public @ResponseBody List<Question> getQuestions(){
@@ -33,17 +34,13 @@ public class QuestionController<Survey> {
 	public @ResponseBody Question getOneQuestion(@PathVariable("id") Long questionId){
 		return repository.findOne(questionId);
 	}
-	//ehkä oma answerController vielä tehtävää??
-	@RequestMapping(value="/answers", method=RequestMethod.GET)
-	public @ResponseBody List<Answer> getAnswers(){
-		return (List<Answer>) arepository.findAll();
-	}
-	
-	@RequestMapping(value = "/savequestion", method = RequestMethod.POST)
+/*
+		@RequestMapping(value = "/addquestion", method = RequestMethod.POST)
 	public String saveQuestion(Question question) {
 		repository.save(question);
 		return "redirect:addsurvey";
 	}
+*/
 
 	@RequestMapping(value = "/saveanswer", method = RequestMethod.POST)
     public @ResponseBody Answer saveAnswer(@RequestBody Answer answer) {
@@ -51,4 +48,13 @@ public class QuestionController<Survey> {
         return answer;
     }
 	
+	
+		@RequestMapping(value = "/savequestion", method = RequestMethod.POST)
+	    public @ResponseBody Question saveQuestion(@RequestBody Question question) {
+	        repository.save(question);
+	        return question;
+	    }
+		
+
 }
+
