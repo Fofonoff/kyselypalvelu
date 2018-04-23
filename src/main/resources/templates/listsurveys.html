@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1"/>
+<title>Insert title here</title>
+</head>
+<body>
+
+ <a href="/addsurvey" class="btn" >Luo kysely</a>    	
+<p></p>
+
+<table>
+
+<tr>
+<th>Kyselyn nimi</th>
+</tr>
+
+<tr th:each="survey : ${surveys}">
+	  	<td th:text="${survey.name}"></td> 
+		<td ><a th:href="@{/opensurvey/{id}(id=${survey.surveyid})}">Avaa kysely</a></td>
+		</tr>	
+</table>  
+
+</body>
+</html>

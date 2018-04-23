@@ -1,18 +1,17 @@
 package com.example.kyselypalvelu.web;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-
+import com.example.kyselypalvelu.domain.Answer;
 import com.example.kyselypalvelu.domain.Survey;
 import com.example.kyselypalvelu.domain.SurveyRepository;
 
@@ -39,20 +38,34 @@ public class SurveyController {
 	}
 	
 
-	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
-	public String addBook(@PathVariable("id") Long surveyId, Model model) {
+	@RequestMapping(value = "/opensurvey/{id}", method = RequestMethod.GET)
+	public String editSurvey(@PathVariable("id") Long surveyId, Model model) {
 		model.addAttribute("survey", srepository.findBysurveyid(surveyId));
-	    return "";
+	    return "redirect:questionlist";
 	}  
 
-	@RequestMapping(value = "/addsurvey", method = RequestMethod.GET)
+	@RequestMapping(value = "/listsurveys", method = RequestMethod.GET)
 	public String listQuestions(Model model) {
 		model.addAttribute("surveys", srepository.findAll());
+		return "listsurveys";
+	}
+
+	@RequestMapping(value = "/savesurvey", method = RequestMethod.POST)
+	public String saveSurvey(Survey survey) {
+		srepository.save(survey);
+		return "redirect:listsurveys";
+	} 
+	
+	@RequestMapping(value = "/addsurvey")
+	public String addSurvey(Model model) {
 		model.addAttribute("survey", new Survey());
 		return "addsurvey";
 	}
-
-
 	
+	/*@RequestMapping(value = "/savesurvey", method = RequestMethod.POST)
+    public @ResponseBody Survey saveSurvey(@RequestBody Survey survey) {
+        srepository.save(survey);
+        return survey;
+    }*/
 	
 }

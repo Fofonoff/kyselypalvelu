@@ -45,7 +45,7 @@ public class QuestionController<Survey> {
 		return "redirect:addsurvey";
 	}
 
-	@RequestMapping(value = "/answers", method = RequestMethod.POST)
+	@RequestMapping(value = "/saveanswer", method = RequestMethod.POST)
     public @ResponseBody Answer saveAnswer(@RequestBody Answer answer) {
         arepository.save(answer);
         return answer;
