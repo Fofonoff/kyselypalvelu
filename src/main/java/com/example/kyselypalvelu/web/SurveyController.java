@@ -11,9 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.example.kyselypalvelu.domain.Answer;
-
-import com.example.kyselypalvelu.domain.Question;
 
 import com.example.kyselypalvelu.domain.Survey;
 import com.example.kyselypalvelu.domain.SurveyRepository;
@@ -24,6 +21,13 @@ public class SurveyController {
 
 	@Autowired
 	private SurveyRepository srepository;
+	
+	
+	// API doc
+	@RequestMapping(value = "/apidoc", method = RequestMethod.GET)
+	public String apiDoc() {
+		return "apidoc";
+	}
 
 	
 	@RequestMapping(value="/surveys", method=RequestMethod.GET)
@@ -52,12 +56,12 @@ public class SurveyController {
 		model.addAttribute("surveys", srepository.findAll());
 		return "listsurveys";
 	}
-
+/*
 	@RequestMapping(value = "/savesurvey", method = RequestMethod.POST)
 	public String saveSurvey(Survey survey) {
 		srepository.save(survey);
 		return "redirect:listsurveys";
-	} 
+	} */
 	
 	@RequestMapping(value = "/addsurvey")
 	public String addSurvey(Model model) {
@@ -65,19 +69,11 @@ public class SurveyController {
 		return "addsurvey";
 	}
 	
-	/*
+
 	@RequestMapping(value = "/savesurvey", method = RequestMethod.POST)
     public @ResponseBody Survey saveSurvey(@RequestBody Survey survey) {
         srepository.save(survey);
         return survey;
     }
-
-*/
-	
-	/*@RequestMapping(value = "/savesurvey", method = RequestMethod.POST)
-    public @ResponseBody Survey saveSurvey(@RequestBody Survey survey) {
-        srepository.save(survey);
-        return survey;
-    }*/
 	
 }

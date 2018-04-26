@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.example.kyselypalvelu.domain.Answer;
-import com.example.kyselypalvelu.domain.AnswerRepository;
 import com.example.kyselypalvelu.domain.Question;
 import com.example.kyselypalvelu.domain.QuestionRepository;
 
@@ -21,7 +19,6 @@ public class QuestionController<Survey> {
 
 	@Autowired
 	private QuestionRepository repository;
-	private AnswerRepository arepository;
 	
 	
 	
@@ -30,11 +27,12 @@ public class QuestionController<Survey> {
 		return (List<Question>) repository.findAll();
 	}
 	
-	@RequestMapping(value="/question/{id}", method=RequestMethod.GET)
+	@RequestMapping(value="/questions/{id}", method=RequestMethod.GET)
 	public @ResponseBody Question getOneQuestion(@PathVariable("id") Long questionId){
 		return repository.findOne(questionId);
 	}
 /*
+ *  Myöhempää käyttöä varten??
 		@RequestMapping(value = "/addquestion", method = RequestMethod.POST)
 	public String saveQuestion(Question question) {
 		repository.save(question);
@@ -42,11 +40,6 @@ public class QuestionController<Survey> {
 	}
 */
 
-	@RequestMapping(value = "/saveanswer", method = RequestMethod.POST)
-    public @ResponseBody Answer saveAnswer(@RequestBody Answer answer) {
-        arepository.save(answer);
-        return answer;
-    }
 	
 	
 		@RequestMapping(value = "/savequestion", method = RequestMethod.POST)

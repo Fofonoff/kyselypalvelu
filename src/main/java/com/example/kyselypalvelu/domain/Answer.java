@@ -20,9 +20,9 @@ private String vastaus;
 @JoinColumn(name="id")
 private Question question;
 
-private Answer (){}
+public Answer (){}
 
-private Answer(String vastaus){
+public Answer(String vastaus){
 	this.vastaus=vastaus;
 }
 
