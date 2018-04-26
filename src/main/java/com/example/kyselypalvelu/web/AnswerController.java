@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.kyselypalvelu.domain.Answer;
 import com.example.kyselypalvelu.domain.AnswerRepository;
+import com.example.kyselypalvelu.domain.Question;
 
 @Controller
 public class AnswerController {
@@ -30,9 +31,10 @@ public class AnswerController {
 		return arepository.findOne(answerId);
 	}
 	
-	@RequestMapping(value = "/saveanswer", method = RequestMethod.POST)
-    public @ResponseBody Answer saveAnswer(@RequestBody Answer answer) {
-        arepository.save(answer);
+	@RequestMapping(value = "/saveanswer/{questionid}", method = RequestMethod.POST)
+    public @ResponseBody Answer saveAnswer(@RequestBody Answer answer, @PathVariable("questionid") Long questionid) {
+        answer.setQuestion(new Question(questionid));
+		arepository.save(answer);
         return answer;
     }
 	

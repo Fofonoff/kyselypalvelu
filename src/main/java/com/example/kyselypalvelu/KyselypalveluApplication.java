@@ -42,18 +42,18 @@ public class KyselypalveluApplication extends SpringBootServletInitializer{
 			log.info("Saving couple of questions");
 			
 			Answer answer = new Answer("Kyllä");
-			Question question = new Question("uusia", "Tutustuitko uusiin ihmisiin?", " ", survey1);
+			Question question = new Question("Tutustuitko uusiin ihmisiin?", " ", survey1);
 			repository.save(question);
 			answer.setQuestion(question);
 			arepo.save(answer);
 			
-			repository.save(new Question("beer", "Olut, kalja, bisse vai bini?", " ", survey1));
-			repository.save(new Question("howAreYou", "Kuinka on päivä mennyt?", " ", survey2));
+			repository.save(new Question("Olut, kalja, bisse vai bini?", " ", survey1));
+			repository.save(new Question("Kuinka on päivä mennyt?", " ", survey2));
 			
-			repository.save(new Question("kavereita", "Menitkö tapahtumiin yksin vai kavereiden kanssa?", " ", survey1));
+			repository.save(new Question("Menitkö tapahtumiin yksin vai kavereiden kanssa?", " ", survey1));
 			repository.save(question);
 			
-			repository.save(new Question("bestest", "Mistä Helgan järjestämästä tapahtumasta olet pitänyt eniten?", " ", survey1));
+			repository.save(new Question("Mistä Helgan järjestämästä tapahtumasta olet pitänyt eniten?", " ", survey1));
 		};
 	}
 }

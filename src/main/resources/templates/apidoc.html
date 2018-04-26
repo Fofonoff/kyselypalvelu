@@ -13,7 +13,10 @@
 <h2>All Answers</h2>
 <h2>Survey By Id</h2>
 <h2>Question By Id</h2>
-<h2>Answer By Id</h2><br/>
+<h2>Answer By Id</h2>
+<h2>New Survey</h2>
+<h2>New Question</h2>
+<h2>New Answer</h2><br/>
 
 <div>
 <h2>All Surveys</h2>
@@ -91,6 +94,54 @@
 <p>http://proto304.haaga-helia.fi:8080/kyselypalvelu/answers/2</p>
 <p>API RESPONSE:</p>
 <p>{"answerid":1,"vastaus":"Kyllä"}</p>
+</div>
+
+<div>
+<h2>New Survey</h2>
+<p>API CALL:</p>
+<p>proto304.haaga-helia.fi:8080/kyselypalvelu/savesurvey</p>
+<p>EXAMPLES OF API CALL:</p>
+<p>http://proto304.haaga-helia.fi:8080/kyselypalvelu/savesurvey</p>
+<p>API REQUEST BODY:</p>
+<p>{"name":"Testi", "questions":[]}</p>
+<p>API RESPONSE:</p>
+<p>{
+    "surveyid": 3,
+    "name": "Testi",
+    "questions": []
+}</p>
+</div>
+
+<div>
+<h2>New Question</h2>
+<p>API CALL:</p>
+<p>proto304.haaga-helia.fi:8080/kyselypalvelu/savequestion/{surveyid}</p>
+<p>EXAMPLES OF API CALL:</p>
+<p>http://proto304.haaga-helia.fi:8080/kyselypalvelu/savequestion/1</p>
+<p>API REQUEST BODY:</p>
+<p>{"kysymys":"tää on testikyssäri", "questiontype":"text"}</p>
+<p>API RESPONSE:</p>
+<p>{
+    "id": 6,
+    "kysymys": "tää on testikyssäri",
+    "questiontype": "text",
+    "answer": null
+}</p>
+</div>
+
+<div>
+<h2>New Answer</h2>
+<p>API CALL:</p>
+<p>proto304.haaga-helia.fi:8080/kyselypalvelu/saveanswer/{questionid}</p>
+<p>EXAMPLES OF API CALL:</p>
+<p>http://proto304.haaga-helia.fi:8080/kyselypalvelu/saveanswer/1</p>
+<p>API REQUEST BODY:</p>
+<p>{"vastaus":"tää on testivastaus"}</p>
+<p>API RESPONSE:</p>
+<p>{
+    "answerid": 3,
+    "vastaus": "tää on testivastaus"
+}</p>
 </div>
 
 

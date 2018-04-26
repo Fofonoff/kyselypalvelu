@@ -12,10 +12,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.kyselypalvelu.domain.Question;
 import com.example.kyselypalvelu.domain.QuestionRepository;
+import com.example.kyselypalvelu.domain.Survey;
 
 
 @Controller
-public class QuestionController<Survey> {
+public class QuestionController {
 
 	@Autowired
 	private QuestionRepository repository;
@@ -42,9 +43,10 @@ public class QuestionController<Survey> {
 
 	
 	
-		@RequestMapping(value = "/savequestion", method = RequestMethod.POST)
-	    public @ResponseBody Question saveQuestion(@RequestBody Question question) {
-	        repository.save(question);
+		@RequestMapping(value = "/savequestion/{surveyid}", method = RequestMethod.POST)
+	    public @ResponseBody Question saveQuestion(@RequestBody Question question, @PathVariable("surveyid") Long surveyid) {
+	        question.setSurvey(new Survey(surveyid));
+			repository.save(question);
 	        return question;
 	    }
 		

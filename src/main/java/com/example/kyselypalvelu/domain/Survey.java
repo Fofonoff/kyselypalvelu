@@ -25,6 +25,11 @@ public Survey(String name){
 	this.name=name;
 }
 
+public Survey(Long surveyid){
+	super();
+	this.surveyid = surveyid;
+}
+
 public Long getSurveyid() {
 	return surveyid;
 }

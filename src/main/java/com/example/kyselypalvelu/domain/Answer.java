@@ -20,10 +20,12 @@ private String vastaus;
 @JoinColumn(name="id")
 private Question question;
 
+
 public Answer (){}
 
 public Answer(String vastaus){
 	this.vastaus=vastaus;
+
 }
 
 public Long getAnswerid() {
