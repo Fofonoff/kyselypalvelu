@@ -32,6 +32,11 @@ public Answer(String vastaus){
 	this.vastaus=vastaus;
 }
 
+public Answer(Long answerid) {
+	super();
+	this.answerid = answerid;
+}
+
 public Long getAnswerid() {
 	return answerid;
 }
