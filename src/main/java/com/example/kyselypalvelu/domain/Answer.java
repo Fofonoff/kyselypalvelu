@@ -30,7 +30,6 @@ public Answer (){}
 
 public Answer(String vastaus){
 	this.vastaus=vastaus;
-
 }
 
 public Long getAnswerid() {

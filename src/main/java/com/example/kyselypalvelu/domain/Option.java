@@ -24,6 +24,7 @@ private String text;
 @JoinColumn(name="id")
 private Question question;
 @ManyToMany(cascade = CascadeType.ALL, mappedBy="option")
+@JsonIgnore
 private List <Answer> answer;
 
 
