@@ -30,7 +30,7 @@ public class AnswerController {
 	}
 	
 	@RequestMapping(value="/answers/{id}", method=RequestMethod.GET)
-	public @ResponseBody Answer getOneAnswer(@PathVariable("id") Long answerId){
+	public @ResponseBody Answer getAnswerById(@PathVariable("id") Long answerId){
 		return arepository.findOne(answerId);
 	}
 	

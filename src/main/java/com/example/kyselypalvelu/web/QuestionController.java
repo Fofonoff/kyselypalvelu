@@ -29,26 +29,25 @@ public class QuestionController {
 	}
 	
 	@RequestMapping(value="/questions/{id}", method=RequestMethod.GET)
-	public @ResponseBody Question getOneQuestion(@PathVariable("id") Long questionId){
+	public @ResponseBody Question getQuestionById(@PathVariable("id") Long questionId){
 		return repository.findOne(questionId);
 	}
-/*
- *  Myöhempää käyttöä varten??
-		@RequestMapping(value = "/addquestion", method = RequestMethod.POST)
-	public String saveQuestion(Question question) {
-		repository.save(question);
-		return "redirect:addsurvey";
+	
+	@RequestMapping(value = "/savequestion/{surveyid}", method = RequestMethod.POST)
+	public @ResponseBody Question saveQuestion(@RequestBody Question question, @PathVariable("surveyid") Long surveyid) {
+	    question.setSurvey(new Survey(surveyid));
+	    repository.save(question);
+	    return question;
 	}
-*/
-
 	
-	
-		@RequestMapping(value = "/savequestion/{surveyid}", method = RequestMethod.POST)
-	    public @ResponseBody Question saveQuestion(@RequestBody Question question, @PathVariable("surveyid") Long surveyid) {
-	        question.setSurvey(new Survey(surveyid));
+	/*
+	 *  Myöhempää käyttöä varten??
+			@RequestMapping(value = "/addquestion", method = RequestMethod.POST)
+		public String saveQuestion(Question question) {
 			repository.save(question);
-	        return question;
-	    }
+			return "redirect:addsurvey";
+		}
+	*/
 		
 
 }

@@ -29,22 +29,23 @@ public class SurveyController {
 		return "apidoc";
 	}
 
-	
 	@RequestMapping(value="/surveys", method=RequestMethod.GET)
 	public @ResponseBody List<Survey> getSurveys(){
 		return (List<Survey>) srepository.findAll();
 	}
-	//@RequestMapping(value="/surveys/{name}", method=RequestMethod.GET)//idis löytää nimen perusteella tietyt kyssärit tiettyyn surveyhyn
-	//public @ResponseBody Survey getSurveys(@PathVariable("name")String name){
-	//return srepository.findByname(name);
-	//}
 
 	@RequestMapping(value ="/surveys/{id}", method = RequestMethod.GET)
-	public @ResponseBody Survey findSurveyRest(@PathVariable("id") Long surveyid) {
+	public @ResponseBody Survey getSurveyById(@PathVariable("id") Long surveyid) {
 		return srepository.findOne(surveyid);
 	}
-	
 
+	@RequestMapping(value = "/savesurvey", method = RequestMethod.POST)
+    public @ResponseBody Survey saveSurvey(@RequestBody Survey survey) {
+        srepository.save(survey);
+        return survey;
+    }
+	
+	
 	@RequestMapping(value = "/opensurvey/{id}", method = RequestMethod.GET)
 	public String editSurvey(@PathVariable("id") Long surveyId, Model model) {
 		model.addAttribute("survey", srepository.findBysurveyid(surveyId));
@@ -69,11 +70,9 @@ public class SurveyController {
 		return "addsurvey";
 	}
 	
-
-	@RequestMapping(value = "/savesurvey", method = RequestMethod.POST)
-    public @ResponseBody Survey saveSurvey(@RequestBody Survey survey) {
-        srepository.save(survey);
-        return survey;
-    }
+	//@RequestMapping(value="/surveys/{name}", method=RequestMethod.GET)//idis löytää nimen perusteella tietyt kyssärit tiettyyn surveyhyn
+	//public @ResponseBody Survey getSurveys(@PathVariable("name")String name){
+	//return srepository.findByname(name);
+	//}
 	
 }
