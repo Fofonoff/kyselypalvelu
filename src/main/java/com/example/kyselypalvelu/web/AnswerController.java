@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.kyselypalvelu.domain.Answer;
 import com.example.kyselypalvelu.domain.AnswerRepository;
+import com.example.kyselypalvelu.domain.Option;
+import com.example.kyselypalvelu.domain.OptionRepository;
 import com.example.kyselypalvelu.domain.Question;
 
 @Controller
@@ -19,7 +21,8 @@ public class AnswerController {
 
 	@Autowired
 	private AnswerRepository arepository;
-	
+	@Autowired
+	private OptionRepository orepository;
 	
 	@RequestMapping(value="/answers", method=RequestMethod.GET)
 	public @ResponseBody List<Answer> getAnswers(){
@@ -27,7 +30,7 @@ public class AnswerController {
 	}
 	
 	@RequestMapping(value="/answers/{id}", method=RequestMethod.GET)
-	public @ResponseBody Answer getOneAnswer(@PathVariable("id") Long answerId){
+	public @ResponseBody Answer getAnswerById(@PathVariable("id") Long answerId){
 		return arepository.findOne(answerId);
 	}
 	
@@ -37,5 +40,10 @@ public class AnswerController {
 		arepository.save(answer);
         return answer;
     }
-	
+	@RequestMapping(value = "/saveoption/{questionid}", method = RequestMethod.POST)
+    public @ResponseBody Option saveOption(@RequestBody Option option, @PathVariable("questionid") Long questionid) {
+        option.setQuestion(new Question(questionid));
+		orepository.save(option);
+        return option;
+}
 }

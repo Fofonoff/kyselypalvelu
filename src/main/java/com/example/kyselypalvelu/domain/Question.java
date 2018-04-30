@@ -26,7 +26,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 		@JoinColumn(name="surveyid")
 		private Survey survey;
 		@OneToMany(cascade = CascadeType.ALL, mappedBy="question")
-		private List <Answer> answer;
+		private List <Answer> answers;
+		@OneToMany(cascade = CascadeType.ALL, mappedBy ="question")
+		private List <Option> options;
 		
 	
 
@@ -56,7 +58,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 		}
 
 		public List<Answer> getAnswer() {
-			return answer;
+			return answers;
 		}
 
 		public String getKysymys() {
@@ -82,7 +84,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 		}
 
 		public void setAnswer(List<Answer> answer) {
-			this.answer = answer;
+			this.answers = answer;
 		}
 
 		public String getQuestiontype() {
@@ -93,10 +95,26 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 			this.questiontype = questiontype;
 		}
 
+		public void setAnswers(List<Answer> answers) {
+			this.answers = answers;
+		}
+
+		public void setOption(List<Option> option) {
+			this.options = option;
+		}
+
+		public List<Answer> getAnswers() {
+			return answers;
+		}
+
+		public List<Option> getOption() {
+			return options;
+		}
+
 		@Override
 		public String toString() {
 			return "Question [id=" + id + ", kysymys=" + kysymys + ", questiontype=" + questiontype + ", survey="
-					+ survey + ", answer=" + answer + "]";
+					+ survey + ", answers=" + answers + ", option=" + options + "]";
 		}
 
 		

@@ -1,10 +1,13 @@
 package com.example.kyselypalvelu.domain;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -19,6 +22,8 @@ private String vastaus;
 @JsonIgnore
 @JoinColumn(name="id")
 private Question question;
+@ManyToMany
+private List <Option> option;
 
 
 public Answer (){}
@@ -60,9 +65,18 @@ public void setVastaus(String vastaus) {
 	this.vastaus = vastaus;
 }
 
+public void setOption(List<Option> option) {
+	this.option = option;
+}
+
+public List<Option> getOption() {
+	return option;
+}
+
 @Override
 public String toString() {
-	return "Answer [answerid=" + answerid + ", vastaus=" + vastaus + ", question=" + question + "]";
+	return "Answer [answerid=" + answerid + ", vastaus=" + vastaus + ", question=" + question + ", option=" + option
+			+ "]";
 }
 
 }
