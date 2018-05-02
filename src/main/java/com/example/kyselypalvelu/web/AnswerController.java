@@ -46,11 +46,12 @@ public class AnswerController {
 		orepository.save(option);
         return option;
 	}
-	/*	TODO
-	@RequestMapping(value = "/saveoption/{answerid}", method = RequestMethod.POST)
-    public @ResponseBody Option saveOptionToAnswer(@RequestBody Option option, @PathVariable("answerid") Long answerid) {
-        option.setAnswer(new Answer(answerid));
-		orepository.save(option);
-        return option;
-	}*/
+	
+	@RequestMapping(value = "/saveoptionanswer/{optionid}", method = RequestMethod.POST)
+    public @ResponseBody Answer saveOptionToAnswer(@PathVariable("optionid")List<Option> optionid){
+			Answer answer = arepository.save(new Answer());
+			answer.setOption(optionid);
+			arepository.save(answer);
+        return answer;
+	}
 }

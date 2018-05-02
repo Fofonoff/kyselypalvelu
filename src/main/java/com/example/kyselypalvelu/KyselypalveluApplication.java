@@ -12,6 +12,8 @@ import org.springframework.context.annotation.Bean;
 
 import com.example.kyselypalvelu.domain.Answer;
 import com.example.kyselypalvelu.domain.AnswerRepository;
+import com.example.kyselypalvelu.domain.Option;
+import com.example.kyselypalvelu.domain.OptionRepository;
 import com.example.kyselypalvelu.domain.Question;
 import com.example.kyselypalvelu.domain.QuestionRepository;
 import com.example.kyselypalvelu.domain.Survey;
@@ -32,7 +34,7 @@ public class KyselypalveluApplication extends SpringBootServletInitializer{
 	}
 	
 	@Bean
-	public CommandLineRunner questionDemo(QuestionRepository repository, SurveyRepository srepo, AnswerRepository arepo) {
+	public CommandLineRunner questionDemo(QuestionRepository repository, SurveyRepository srepo, AnswerRepository arepo, OptionRepository orepo) {
 		return (args) -> {
 			log.info("Saving test Boss-survey and Inno-survey");
 			Survey survey1 = srepo.save(new Survey("Boss"));
@@ -54,6 +56,7 @@ public class KyselypalveluApplication extends SpringBootServletInitializer{
 			repository.save(question);
 			
 			repository.save(new Question("Mistä Helgan järjestämästä tapahtumasta olet pitänyt eniten?", " ", survey1));
+			orepo.save(new Option("testi"));
 		};
 	}
 }
