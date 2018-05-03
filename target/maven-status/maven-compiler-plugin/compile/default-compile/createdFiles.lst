@@ -1,0 +1,14 @@
+com\example\kyselypalvelu\domain\User.class
+com\example\kyselypalvelu\domain\UserRepository.class
+com\example\kyselypalvelu\domain\OptionRepository.class
+com\example\kyselypalvelu\domain\Survey.class
+com\example\kyselypalvelu\domain\AnswerRepository.class
+com\example\kyselypalvelu\domain\QuestionRepository.class
+com\example\kyselypalvelu\web\AnswerController.class
+com\example\kyselypalvelu\domain\SurveyRepository.class
+com\example\kyselypalvelu\KyselypalveluApplication.class
+com\example\kyselypalvelu\web\QuestionController.class
+com\example\kyselypalvelu\web\SurveyController.class
+com\example\kyselypalvelu\domain\Answer.class
+com\example\kyselypalvelu\domain\Option.class
+com\example\kyselypalvelu\domain\Question.class

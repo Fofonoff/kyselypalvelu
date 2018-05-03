@@ -33,7 +33,7 @@ public class KyselypalveluApplication extends SpringBootServletInitializer{
 		SpringApplication.run(KyselypalveluApplication.class, args);
 	}
 	
-	@Bean
+	/*@Bean
 	public CommandLineRunner questionDemo(QuestionRepository repository, SurveyRepository srepo, AnswerRepository arepo, OptionRepository orepo) {
 		return (args) -> {
 			log.info("Saving test Boss-survey and Inno-survey");
@@ -58,5 +58,6 @@ public class KyselypalveluApplication extends SpringBootServletInitializer{
 			repository.save(new Question("Mistä Helgan järjestämästä tapahtumasta olet pitänyt eniten?", " ", survey1));
 			orepo.save(new Option("testi"));
 		};
+	}*/
 	}
-}
+
