@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,6 +39,12 @@ public class QuestionController {
 	    question.setSurvey(new Survey(surveyid));
 	    repository.save(question);
 	    return question;
+	}
+	@RequestMapping(value = "/addquestion/{surveyid}")
+	public String addQuestion(Model model, Question question) {
+		model.addAttribute("question", new Question());
+		repository.save(question);
+		return "questionlist";
 	}
 	
 	/*

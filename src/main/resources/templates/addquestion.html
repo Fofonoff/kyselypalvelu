@@ -10,21 +10,21 @@
 
 <table>
 <tr>
-<th>Kysymyksen nimi</th> 
-<th>Kysymys</th>
+<th>Kysymys</th> 
+<th>Kysymys type</th>
 </tr>
 
 <tr th:each="question : ${questions}">
-	  	<td th:text="${question.name}"></td> 
-		<td th:text="${question.kysymys}"></td>	
+	  	<td th:text="${question.kysymys}"></td> 
+		<td th:text="${question.questiontype}"></td>	
 </table>
 
 	
 <form th:object="${question}" th:action="@{/save}" action="#" method="post">
-  Kysymyksen nimi:<br>
-  <input type="text" id="name" th:field="*{name}" name="name"><br>
   Kysymys:<br>
-  <input type="text" id="kysymys" th:field="${question.kysymys}" name="kysymys"><p>
+  <input type="text" id="kysymys" th:field="*{kysymys}" name="kysymys"><br>
+  Kysymys type:<br>
+  <input type="text" id="questiontype" th:field="${question.questiontype}" name="questiontype"><p>
   <input type="submit" value="Lisaa kysymys"></input>
 </form>
 

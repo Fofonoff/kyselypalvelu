@@ -1,11 +1,31 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Insert title here</title>
 </head>
 <body>
+<table>
+<tr>
+<th>Survey ID</th>
+<th>Survey Name</th>
+</tr> 
+<!-- tässä pitää saada survey id mukaan nyt tallentuu ilman surveyid:tä kantaan, urlissa olis eli pitää saada
+tonne hiddeniin liikkumaan se id -->
+<tr th:each="survey : ${surveys}">
+		<td th:text="${survey.id}"></td>
+		<td th:text="${survey.name}"></td>
+</tr>
+</table>
+<form th:object="${question}" th:action="@{/addquestion/{surveyid}}" action="#" method="post">
+	<input type="hidden" id="survey" th:field="*{survey}" />
+ <label for="kysymys">Kysymys:</label> 
+  <input type="text" id="kysymys" th:field="*{kysymys}" />
+  <label for="questiontype">Kysymys type:</label>
+  <input type="text" id="questiontype" th:field="*{questiontype}"/>
 
+  <input type="submit" value="Lisaa kysymys"/>
+</form>
 
 
 </body>
