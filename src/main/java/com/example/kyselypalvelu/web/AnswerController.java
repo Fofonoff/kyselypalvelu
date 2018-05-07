@@ -47,10 +47,11 @@ public class AnswerController {
         return option;
 	}
 	
-	@RequestMapping(value = "/saveoptionanswer/{optionid}", method = RequestMethod.POST)
-    public @ResponseBody Answer saveOptionToAnswer(@PathVariable("optionid")List<Option> optionid){
+	@RequestMapping(value = "/saveoptionanswer/{questionid}/{optionid}", method = RequestMethod.POST)
+    public @ResponseBody Answer saveOptionToAnswer(@PathVariable("optionid")List<Option> optionid, @PathVariable("questionid")Question questionid){
 			Answer answer = arepository.save(new Answer());
 			answer.setOption(optionid);
+			answer.setQuestion(questionid);
 			arepository.save(answer);
         return answer;
 	}
