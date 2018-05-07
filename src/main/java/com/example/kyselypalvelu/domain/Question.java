@@ -57,9 +57,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 			return id;
 		}
 
-		public List<Answer> getAnswer() {
-			return answers;
-		}
 
 		public String getKysymys() {
 			return kysymys;
@@ -83,9 +80,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 			this.survey = survey;
 		}
 
-		public void setAnswer(List<Answer> answer) {
-			this.answers = answer;
-		}
+
 
 		public String getQuestiontype() {
 			return questiontype;
