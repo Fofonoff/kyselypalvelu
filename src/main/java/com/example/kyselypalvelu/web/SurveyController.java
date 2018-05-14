@@ -38,16 +38,19 @@ public class SurveyController {
 	public @ResponseBody Survey getSurveyById(@PathVariable("id") Long surveyid) {
 		return srepository.findOne(surveyid);
 	}
-//saa postmanilla esim nyt uutta surveyta tallennettua, sotii kommentoitua metodia vastaan eli nyt ei toimi thymelead/html lisäys
+/*
+	//saa postmanilla esim nyt uutta surveyta tallennettua, sotii kommentoitua metodia vastaan eli nyt ei toimi thymelead/html lisäys
 	@RequestMapping(value = "/savesurvey", method = RequestMethod.POST)
     public @ResponseBody Survey saveSurvey(@RequestBody Survey survey) {
         srepository.save(survey);
         return survey;
     }
-	
+	*/
 	@RequestMapping(value = "/opensurvey/{id}", method = RequestMethod.GET)
-	public String editSurvey(@PathVariable("id") Long surveyId, Model model) {
-		model.addAttribute("survey", srepository.findBysurveyid(surveyId));
+	public String editSurvey(@PathVariable("id") Long surveyid, Model model, Survey survey) {
+		model.addAttribute("survey", srepository.findOne(surveyid));
+		//Survey survey2 = srepository.findOne(surveyid);
+		//System.out.println("Kysely id "+ survey2.getSurveyid());
 		model.addAttribute("question", new Question());
 		return "questionlist";
 	}  
@@ -57,13 +60,13 @@ public class SurveyController {
 		model.addAttribute("surveys", srepository.findAll());
 		return "listsurveys";
 	}
-	/* thymeleaf-html savetusta varten ilman requestbodya, nyt ilman tätä ei toimi!!!
+	// thymeleaf-html savetusta varten ilman requestbodya, nyt ilman tätä ei toimi!!!
 	@RequestMapping(value = "/savesurvey", method = RequestMethod.POST)
 	public String saveSurvey(Survey survey) {
 		srepository.save(survey);
 		return "redirect:listsurveys";
 	} 
-	*/
+	
 	@RequestMapping(value = "/addsurvey")
 	public String addSurvey(Model model) {
 		model.addAttribute("survey", new Survey());

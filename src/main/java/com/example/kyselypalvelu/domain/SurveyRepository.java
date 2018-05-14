@@ -11,9 +11,10 @@ public interface SurveyRepository extends CrudRepository <Survey, Long>{
 
 	Optional<Survey> findBysurveyid(Long surveyid);
 
+	//Survey findOne(Long surveyid);
 
 
-
+//isolla Surveyid tossa finby:ssa ja Optional turha??
 	
 
 }

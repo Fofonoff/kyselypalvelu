@@ -12,13 +12,11 @@
 </tr> 
 <!-- tässä pitää saada survey id mukaan nyt tallentuu ilman surveyid:tä kantaan, urlissa olis eli pitää saada
 tonne hiddeniin liikkumaan se id -->
-<tr th:each="survey : ${surveys}">
-		<td th:text="${survey.id}"></td>
-		<td th:text="${survey.name}"></td>
-</tr>
+
 </table>
-<form th:object="${question}" th:action="@{/addquestion/{surveyid}}" action="#" method="post">
-	<input type="hidden" id="survey" th:field="*{survey}" />
+<!-- <form th:object="${question}" th:action="@{../addquestion/{id}}" action="#" method="get"> -->
+<form th:object="${question}" th:action="@{../addquestion/{id}(id=${survey.surveyid})}" action="#" method="get">
+	<!--<input type="hidden" id="survey" th:field="*{survey}" />  -->
  <label for="kysymys">Kysymys:</label> 
   <input type="text" id="kysymys" th:field="*{kysymys}" />
   <label for="questiontype">Kysymys type:</label>

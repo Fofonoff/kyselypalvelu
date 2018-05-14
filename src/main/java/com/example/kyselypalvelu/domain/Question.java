@@ -105,12 +105,15 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 		public List<Option> getOption() {
 			return options;
 		}
+		
 
 		@Override
 		public String toString() {
 			return "Question [id=" + id + ", kysymys=" + kysymys + ", questiontype=" + questiontype + ", survey="
 					+ survey + ", answers=" + answers + ", option=" + options + "]";
 		}
+
+		
 
 		
 	
