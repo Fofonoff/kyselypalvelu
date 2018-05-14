@@ -21,10 +21,8 @@ private Long surveyid;
 private String name;
 @OneToMany(cascade= CascadeType.ALL, mappedBy="survey")
 private List <Question> questions;
-@ManyToOne
-@JsonIgnore
-@JoinColumn(name = "userid")
-private User user;
+
+
 
 public Survey(){}
 
@@ -62,13 +60,8 @@ public void setQuestion(List<Question> questions) {
 	this.questions = questions;
 }
 
-public User getUser() {
-	return user;
-}
 
-public void setUser(User user) {
-	this.user = user;
-}
+
 
 @Override
 public String toString() {
